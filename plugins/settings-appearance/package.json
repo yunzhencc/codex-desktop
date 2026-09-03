@@ -1,0 +1,30 @@
+{
+  "name": "@codex-desktop/settings-appearance",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.tsx",
+    "./client": "./src/index.tsx"
+  },
+  "dependencies": {
+    "@codex-desktop/settings-layout": "workspace:*",
+    "@deepseek-ai/cordis": "^4.0.2",
+    "@yunzhen/cordis-ui-i18n": "workspace:*",
+    "@yunzhen/cordis-ui-theme": "workspace:*",
+    "lucide-react": "^1.39.0",
+    "react": "^19.2.8",
+    "react-i18next": "^16.5.9"
+  },
+  "devDependencies": {
+    "@yunzhen/cordis-ui-renderer": "workspace:*",
+    "@yunzhen/cordis-ui-router": "workspace:*",
+    "react-dom": "^19.2.8"
+  },
+  "yunzhen": {
+    "client": {
+      "platform": "web",
+      "inject": ["@yunzhen/cordis-ui-i18n", "@codex-desktop/settings-layout", "@yunzhen/cordis-ui-theme"],
+      "immediately": false
+    }
+  }
+}

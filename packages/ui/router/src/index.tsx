@@ -5,6 +5,7 @@ import { Slot, SlotOwner } from '@yunzhen/cordis-ui-renderer';
 import { createElement, useLayoutEffect, useState, useSyncExternalStore } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BrowserRouter, matchRoutes, NavLink, Outlet, useLocation, useRoutes } from 'react-router-dom';
+import styles from './index.module.css';
 import { RouteRegistry } from './routes';
 
 export { RouteRegistry } from './routes';
@@ -86,15 +87,15 @@ function NavigationSidebar({ routes }: { routes: RouteRenderer }) {
     .sort((left, right) => left.navigation!.order - right.navigation!.order);
 
   return (
-    <>
-      <nav>
+    <div className={styles.sidebar}>
+      <nav className={styles.navigation}>
         {links.map(route => (
           <NavLink key={route.id} to={routeHref(route, byId)}>{route.navigation!.labelKey ? t(route.navigation!.labelKey) : route.navigation!.label}</NavLink>
         ))}
         <Slot name="sidebar.navigation" />
       </nav>
-      <footer><Slot name="sidebar.footer" /></footer>
-    </>
+      <footer className={styles.footer}><Slot name="sidebar.footer" /></footer>
+    </div>
   );
 }
 

@@ -1,25 +1,30 @@
 {
-  "name": "@codex-desktop/settings-layout",
+  "name": "@codex-desktop/account-menu",
   "type": "module",
   "private": true,
   "exports": {
-    ".": "./src/index.ts",
-    "./client": "./src/index.ts"
+    ".": "./src/index.tsx",
+    "./client": "./src/index.tsx"
   },
   "dependencies": {
+    "@base-ui/react": "^1.7.0",
+    "@codex-desktop/settings-layout": "workspace:*",
     "@deepseek-ai/cordis": "^4.0.2",
     "@yunzhen/cordis-ui-i18n": "workspace:*",
     "@yunzhen/cordis-ui-renderer": "workspace:*",
     "@yunzhen/cordis-ui-router": "workspace:*",
-    "@yunzhen/cordis-ui-slots": "workspace:*",
+    "lucide-react": "^1.39.0",
     "react": "^19.2.8",
     "react-i18next": "^16.5.9",
     "react-router-dom": "^7.18.3"
   },
+  "devDependencies": {
+    "react-dom": "^19.2.8"
+  },
   "yunzhen": {
     "client": {
       "platform": "web",
-      "inject": ["@yunzhen/cordis-ui-i18n", "@yunzhen/cordis-ui-renderer", "@yunzhen/cordis-ui-router"],
+      "inject": ["@yunzhen/cordis-ui-i18n", "@yunzhen/cordis-ui-renderer", "@yunzhen/cordis-ui-router", "@codex-desktop/settings-layout"],
       "immediately": false
     }
   }

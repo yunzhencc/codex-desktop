@@ -1,0 +1,142 @@
+.panel {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  color: var(--app-text);
+  border: 0;
+}
+
+.panel legend {
+  padding: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.themeOptions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.themeOption {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  color: var(--app-text-muted);
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.themeInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.preview {
+  display: block;
+  height: 152px;
+  overflow: hidden;
+  border: 1px solid var(--app-border);
+  border-radius: 12px;
+  background: #f3f3f3;
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--app-text) 8%, transparent);
+  transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+}
+
+.preview[data-theme-preview='dark'] {
+  background: #5d5d5d;
+}
+
+.preview[data-theme-preview='system'] {
+  background: linear-gradient(90deg, #9f9f9f 0 50%, #5d5d5d 50% 100%);
+}
+
+.preview img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.themeOption:hover .preview {
+  transform: translateY(-1px);
+}
+
+.themeInput:checked + .preview {
+  border-color: var(--app-accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--app-accent) 35%, transparent);
+}
+
+.themeInput:checked ~ span:last-child {
+  color: var(--app-text);
+  font-weight: 500;
+}
+
+.themeInput:focus-visible + .preview {
+  outline: 2px solid var(--app-accent);
+  outline-offset: 3px;
+}
+
+.controls {
+  overflow: hidden;
+  background: var(--app-input);
+  border: 1px solid var(--app-border);
+  border-radius: 12px;
+}
+
+.fontSizeRow {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  padding: 0 16px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.fontSizeControl {
+  display: flex;
+  flex: 0 1 320px;
+  gap: 12px;
+  align-items: center;
+}
+
+.fontSizeControl input {
+  flex: 1;
+  min-width: 96px;
+  accent-color: var(--app-accent);
+}
+
+.fontSizeControl output {
+  width: 48px;
+  color: var(--app-text-muted);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+@media (max-width: 512px) {
+  .themeOptions {
+    gap: 8px;
+  }
+
+  .preview {
+    height: 112px;
+  }
+
+  .fontSizeRow {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    padding-block: 16px;
+  }
+
+  .fontSizeControl {
+    width: 100%;
+  }
+}

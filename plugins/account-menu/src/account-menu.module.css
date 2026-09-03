@@ -1,0 +1,82 @@
+.trigger {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  align-items: center;
+  min-height: 40px;
+  padding: 4px 10px;
+  color: var(--app-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  border-radius: 10px;
+}
+
+.trigger:hover,
+.trigger[data-open] {
+  background: var(--app-accent-surface);
+}
+
+.avatar {
+  display: grid;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  color: var(--app-contrast-text);
+  font-size: 13px;
+  font-weight: 600;
+  place-items: center;
+  background: #a7894b;
+  border-radius: 50%;
+}
+
+.user {
+  overflow: hidden;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.popup {
+  width: min(18rem, calc(100vw - 24px));
+  padding: 8px;
+  color: var(--app-text);
+  background: var(--app-surface-elevated);
+  border: 1px solid var(--app-border);
+  border-radius: 14px;
+  box-shadow: var(--app-elevation);
+  outline: none;
+}
+
+.profile,
+.item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 8px;
+}
+
+.profile {
+  font-weight: 500;
+}
+
+.item {
+  color: inherit;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.item:hover,
+.item:focus-visible {
+  background: var(--app-accent-surface);
+  outline: none;
+}
+
+.separator {
+  height: 1px;
+  margin: 8px 0;
+  background: var(--app-border);
+}
