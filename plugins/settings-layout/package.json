@@ -1,0 +1,27 @@
+{
+  "name": "@codex-desktop/settings-layout",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./client": "./src/index.ts"
+  },
+  "dependencies": {
+    "@deepseek-ai/cordis": "^4.0.2",
+    "@yunzhen/cordis-ui-renderer": "workspace:*",
+    "@yunzhen/cordis-ui-router": "workspace:*",
+    "@yunzhen/cordis-ui-slots": "workspace:*",
+    "react": "^19.2.8",
+    "react-router-dom": "^7.18.3"
+  },
+  "devDependencies": {
+    "@yunzhen/cordis-ui-i18n": "workspace:*"
+  },
+  "yunzhen": {
+    "client": {
+      "platform": "web",
+      "inject": ["@yunzhen/cordis-ui-renderer", "@yunzhen/cordis-ui-router"],
+      "immediately": false
+    }
+  }
+}

@@ -4,6 +4,8 @@
   name: '@yunzhen/cordis-ui-renderer'
 - id: layout
   name: '@codex-desktop/app-layout'
+- id: settings-layout
+  name: '@codex-desktop/settings-layout'
 - id: router
   name: '@yunzhen/cordis-ui-router'
 - id: theme
