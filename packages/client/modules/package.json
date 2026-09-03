@@ -1,0 +1,14 @@
+{
+  "name": "@yunzhen/cordis-client-modules",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./manifest": "./src/manifest.ts"
+  },
+  "dependencies": {
+    "@deepseek-ai/cordis": "^4.0.2",
+    "@yunzhen/cordis-ui-renderer": "workspace:*"
+  }
+}
+

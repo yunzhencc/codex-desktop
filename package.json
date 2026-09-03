@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && pnpm -r exec tsc --noEmit",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "preview": "vite preview",
@@ -44,6 +44,7 @@
     "code-inspector-plugin": "^2.0.8",
     "eslint": "^10.9.1",
     "eslint-plugin-react-refresh": "^0.5.6",
+    "jsdom": "^30.0.1",
     "lint-staged": "^17.4.1",
     "shadcn": "^4.19.1",
     "simple-git-hooks": "^2.14.0",

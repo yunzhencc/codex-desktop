@@ -1,0 +1,7 @@
+{
+  "name": "@yunzhen/cordis-ui-slots",
+  "type": "module",
+  "private": true,
+  "exports": "./src/index.ts"
+}
+

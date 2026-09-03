@@ -1,0 +1,11 @@
+{
+  "name": "@yunzhen/cordis-host-plugin-catalog",
+  "type": "module",
+  "private": true,
+  "exports": "./src/index.ts",
+  "dependencies": {
+    "@yunzhen/cordis-client-modules": "workspace:*",
+    "yaml": "^2.9.0"
+  }
+}
+

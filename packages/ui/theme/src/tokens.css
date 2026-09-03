@@ -1,0 +1,48 @@
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--app-text);
+  background: var(--app-background);
+}
+
+:root[data-theme='light'] {
+  --app-background: #ffffff;
+  --app-surface: #f9fafb;
+  --app-surface-elevated: #ffffff;
+  --app-input: #ffffff;
+  --app-text: #0f1115;
+  --app-text-muted: #61666b;
+  --app-border: rgb(0 0 0 / 12%);
+  --app-accent: #4176e6;
+  --app-accent-surface: #e4edfd;
+  --app-bubble: #edf3fe;
+  --app-contrast: #61666b;
+  --app-contrast-text: #ffffff;
+  --app-elevation: 0 1px 2px rgb(15 17 21 / 8%), 0 6px 16px rgb(15 17 21 / 6%);
+}
+
+:root[data-theme='dark'] {
+  --app-background: #151517;
+  --app-surface: #1b1b1c;
+  --app-surface-elevated: #2c2c2e;
+  --app-input: #2c2c2e;
+  --app-text: #ebeef2;
+  --app-text-muted: #cfd3d6;
+  --app-border: rgb(255 255 255 / 16%);
+  --app-accent: #679efe;
+  --app-accent-surface: #34415b;
+  --app-bubble: #2c2c2e;
+  --app-contrast: #ebeef2;
+  --app-contrast-text: #151517;
+  --app-elevation: 0 1px 2px rgb(0 0 0 / 24%), 0 6px 16px rgb(0 0 0 / 20%);
+}
+
+body {
+  margin: 0;
+  color: var(--app-text);
+  background: var(--app-background);
+}
+
+#root {
+  min-height: 100vh;
+}
+

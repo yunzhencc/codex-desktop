@@ -12,4 +12,9 @@ export default antfu({
   ],
   jsonc: false,
   react: true,
+}, {
+  files: ['packages/**/*.tsx'],
+  rules: {
+    'react-refresh/only-export-components': 'off',
+  },
 });

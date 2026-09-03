@@ -1,0 +1,23 @@
+{
+  "name": "@yunzhen/cordis-ui-i18n",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.tsx",
+    "./client": "./src/index.tsx"
+  },
+  "dependencies": {
+    "@deepseek-ai/cordis": "^4.0.2",
+    "i18next": "^25.8.13",
+    "react": "^19.2.8",
+    "react-i18next": "^16.5.9"
+  },
+  "yunzhen": {
+    "client": {
+      "platform": "web",
+      "inject": [],
+      "immediately": true
+    }
+  }
+}
+

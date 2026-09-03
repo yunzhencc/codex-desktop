@@ -1,0 +1,64 @@
+.layout {
+  position: relative;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.group {
+  height: 100%;
+}
+
+.sidebar,
+.workbench {
+  box-sizing: border-box;
+  height: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 16px;
+  font-size: var(--app-content-font-size);
+  background: var(--app-surface);
+}
+
+.sidebar {
+  border-right: 1px solid var(--app-border);
+}
+
+.workbench {
+  border-left: 1px solid var(--app-border);
+}
+
+.main {
+  box-sizing: border-box;
+  height: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-size: var(--app-content-font-size);
+}
+
+.separator {
+  position: relative;
+  flex: 0 0 1px;
+  width: 1px;
+  touch-action: none;
+}
+
+.separator::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  content: '';
+  background: var(--app-border);
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+.separator:hover::before,
+.separator:active::before,
+.separator:focus-visible::before {
+  opacity: 1;
+}
+

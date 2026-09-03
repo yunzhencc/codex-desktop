@@ -1,0 +1,27 @@
+{
+  "name": "@yunzhen/cordis-ui-theme",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./client": "./src/index.ts",
+    "./theme": "./src/theme.ts",
+    "./styles": "./src/styles.ts"
+  },
+  "dependencies": {
+    "@deepseek-ai/cordis": "^4.0.2",
+    "@yunzhen/cordis-ui-renderer": "workspace:*",
+    "react": "^19.2.8"
+  },
+  "devDependencies": {
+    "react-dom": "^19.2.8"
+  },
+  "yunzhen": {
+    "client": {
+      "platform": "web",
+      "inject": ["@yunzhen/cordis-ui-renderer"],
+      "immediately": false
+    }
+  }
+}
+

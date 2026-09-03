@@ -10,6 +10,9 @@ trustPolicyExclude:
 
 shellEmulator: true
 
+packages:
+  - packages/*/*
+
 allowBuilds:
   node-pty: false
   simple-git-hooks: true

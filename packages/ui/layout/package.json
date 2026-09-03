@@ -1,0 +1,27 @@
+{
+  "name": "@yunzhen/cordis-ui-layout",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.tsx",
+    "./client": "./src/index.tsx"
+  },
+  "dependencies": {
+    "@deepseek-ai/cordis": "^4.0.2",
+    "@yunzhen/cordis-ui-renderer": "workspace:*",
+    "@yunzhen/cordis-ui-slots": "workspace:*",
+    "react": "^19.2.8",
+    "react-resizable-panels": "^4.12.3"
+  },
+  "devDependencies": {
+    "@yunzhen/cordis-ui-i18n": "workspace:*"
+  },
+  "yunzhen": {
+    "client": {
+      "platform": "web",
+      "inject": ["@yunzhen/cordis-ui-renderer"],
+      "immediately": false
+    }
+  }
+}
+
