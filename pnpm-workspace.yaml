@@ -1,0 +1,15 @@
+minimumReleaseAgeExcludePrune: true
+minimumReleaseAgeExclude:
+  - '@antfu/eslint-config@9.5.1'
+  - eslint-plugin-react-refresh@0.5.6
+  - cn@0.2.4
+
+trustPolicy: no-downgrade
+trustPolicyExclude:
+  - semver@6.3.1
+
+shellEmulator: true
+
+allowBuilds:
+  node-pty: false
+  simple-git-hooks: true
