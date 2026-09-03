@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { codeInspectorPlugin } from 'code-inspector-plugin';
 import { defineConfig } from 'vite';
+import { cordisWebBoot } from './vite-plugin.ts';
 
 const host = process.env.TAURI_DEV_HOST;
 
@@ -14,6 +15,7 @@ export default defineConfig(({ mode }) => ({
       bundler: 'vite',
       editor: 'code',
     }),
+    cordisWebBoot(),
     react(),
     tailwindcss(),
   ],

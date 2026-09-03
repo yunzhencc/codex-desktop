@@ -1,0 +1,14 @@
+- id: i18n
+  name: '@yunzhen/cordis-ui-i18n'
+- id: renderer
+  name: '@yunzhen/cordis-ui-renderer'
+- id: layout
+  name: '@yunzhen/cordis-ui-layout'
+- id: router
+  name: '@yunzhen/cordis-ui-router'
+- id: theme
+  name: '@yunzhen/cordis-ui-theme'
+- id: new-thread
+  name: '@codex-desktop/new-thread'
+- id: local-conversation
+  name: '@codex-desktop/local-conversation'

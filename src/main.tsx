@@ -1,10 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+import { bootWebApp } from '@yunzhen/cordis-client-modules';
+import { graph, registry } from 'virtual:codex-desktop-boot';
 import './styles.css';
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-);
+void bootWebApp({
+  container: document.getElementById('root')!,
+  graph,
+  registry,
+}).catch(error => console.error(error));

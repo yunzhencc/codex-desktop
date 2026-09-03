@@ -12,6 +12,7 @@ shellEmulator: true
 
 packages:
   - packages/*/*
+  - plugins/*
 
 allowBuilds:
   node-pty: false
