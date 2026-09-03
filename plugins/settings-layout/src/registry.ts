@@ -1,5 +1,6 @@
 import type { Context } from '@deepseek-ai/cordis';
 import type {} from '@yunzhen/cordis-ui-router';
+import type { SlotMap } from '@yunzhen/cordis-ui-slots';
 import type { ComponentType } from 'react';
 import { Service } from '@deepseek-ai/cordis';
 
@@ -16,6 +17,7 @@ export interface SettingsEntry {
   Icon?: ComponentType<{ size?: number }>;
   order: number;
   Component: ComponentType;
+  children?: SlotMap;
 }
 
 declare module '@deepseek-ai/cordis' {
@@ -50,6 +52,7 @@ export class SettingsRegistry extends Service {
         parentId: 'settings',
         path: copied.id,
         Component: copied.Component,
+        children: copied.children,
       }));
       this.publish();
       return () => {
@@ -91,5 +94,12 @@ export class SettingsRegistry extends Service {
 }
 
 function copyEntry(entry: SettingsEntry): SettingsEntry {
-  return Object.freeze({ ...entry, group: Object.freeze({ ...entry.group }) });
+  const children = entry.children && Object.freeze(Object.fromEntries(
+    Object.entries(entry.children).map(([name, spec]) => [name, Object.freeze({ ...spec })]),
+  ));
+  return Object.freeze({
+    ...entry,
+    group: Object.freeze({ ...entry.group }),
+    ...(children ? { children } : {}),
+  });
 }

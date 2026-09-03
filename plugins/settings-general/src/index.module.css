@@ -1,0 +1,8 @@
+.content {
+  display: grid;
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--app-border);
+  border-radius: 16px;
+  background: var(--app-border);
+}

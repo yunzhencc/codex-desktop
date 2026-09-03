@@ -12,8 +12,12 @@
   name: '@yunzhen/cordis-ui-theme'
 - id: account-menu
   name: '@codex-desktop/account-menu'
+- id: settings-general
+  name: '@codex-desktop/settings-general'
 - id: settings-appearance
   name: '@codex-desktop/settings-appearance'
+- id: settings-language
+  name: '@codex-desktop/settings-language'
 - id: new-thread
   name: '@codex-desktop/new-thread'
 - id: local-conversation
