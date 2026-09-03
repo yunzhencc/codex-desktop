@@ -7,6 +7,7 @@ export default antfu({
     quotes: 'single',
   },
   ignores: [
+    'docs/**',
     'src-tauri/**',
     'src/components/ui/**',
   ],
