@@ -11,6 +11,9 @@ importers:
       '@base-ui/react':
         specifier: ^1.7.0
         version: 1.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@codex-desktop/app-layout':
+        specifier: workspace:*
+        version: link:plugins/app-layout
       '@codex-desktop/local-conversation':
         specifier: workspace:*
         version: link:plugins/local-conversation
@@ -38,9 +41,6 @@ importers:
       '@yunzhen/cordis-ui-i18n':
         specifier: workspace:*
         version: link:packages/ui/i18n
-      '@yunzhen/cordis-ui-layout':
-        specifier: workspace:*
-        version: link:packages/ui/layout
       '@yunzhen/cordis-ui-renderer':
         specifier: workspace:*
         version: link:packages/ui/renderer
@@ -181,28 +181,6 @@ importers:
         specifier: ^16.5.9
         version: 16.6.6(i18next@25.10.10(typescript@6.0.3))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@6.0.3)
 
-  packages/ui/layout:
-    dependencies:
-      '@deepseek-ai/cordis':
-        specifier: ^4.0.2
-        version: 4.0.2
-      '@yunzhen/cordis-ui-renderer':
-        specifier: workspace:*
-        version: link:../renderer
-      '@yunzhen/cordis-ui-slots':
-        specifier: workspace:*
-        version: link:../slots
-      react:
-        specifier: ^19.2.8
-        version: 19.2.8
-      react-resizable-panels:
-        specifier: ^4.12.3
-        version: 4.12.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
-    devDependencies:
-      '@yunzhen/cordis-ui-i18n':
-        specifier: workspace:*
-        version: link:../i18n
-
   packages/ui/renderer:
     dependencies:
       '@deepseek-ai/cordis':
@@ -232,9 +210,6 @@ importers:
       '@yunzhen/cordis-ui-i18n':
         specifier: workspace:*
         version: link:../i18n
-      '@yunzhen/cordis-ui-layout':
-        specifier: workspace:*
-        version: link:../layout
       '@yunzhen/cordis-ui-renderer':
         specifier: workspace:*
         version: link:../renderer
@@ -268,6 +243,31 @@ importers:
       react-dom:
         specifier: ^19.2.8
         version: 19.2.8(react@19.2.8)
+
+  plugins/app-layout:
+    dependencies:
+      '@deepseek-ai/cordis':
+        specifier: ^4.0.2
+        version: 4.0.2
+      '@yunzhen/cordis-ui-renderer':
+        specifier: workspace:*
+        version: link:../../packages/ui/renderer
+      '@yunzhen/cordis-ui-router':
+        specifier: workspace:*
+        version: link:../../packages/ui/router
+      '@yunzhen/cordis-ui-slots':
+        specifier: workspace:*
+        version: link:../../packages/ui/slots
+      react:
+        specifier: ^19.2.8
+        version: 19.2.8
+      react-resizable-panels:
+        specifier: ^4.12.3
+        version: 4.12.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+    devDependencies:
+      '@yunzhen/cordis-ui-i18n':
+        specifier: workspace:*
+        version: link:../../packages/ui/i18n
 
   plugins/local-conversation:
     dependencies:

@@ -3,7 +3,6 @@
 import type { Context as CordisContext } from '@deepseek-ai/cordis';
 import { Context } from '@deepseek-ai/cordis';
 import { apply as applyI18n } from '@yunzhen/cordis-ui-i18n';
-import { apply as applyLayout, inject as layoutInject } from '@yunzhen/cordis-ui-layout';
 import { apply as applyRenderer, inject as rendererInject, Slot } from '@yunzhen/cordis-ui-renderer';
 import { act, StrictMode } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
@@ -23,11 +22,22 @@ async function boot() {
   await i18n.await();
   const renderer = ctx.plugin({ apply: applyRenderer, inject: rendererInject });
   await renderer.await();
-  const layout = ctx.plugin({ apply: applyLayout, inject: layoutInject });
-  await layout.await();
   const router = ctx.plugin({ inject: routerInject, apply: applyRouter });
   await router.await();
-  const fibers = [router, layout, renderer, i18n];
+  ctx.routes.register({
+    id: 'app-layout',
+    Component: () => (
+      <>
+        <Slot name="sidebar" />
+        <Slot name="main" />
+      </>
+    ),
+    children: {
+      sidebar: { kind: 'single', scope: 'root' },
+      main: { kind: 'single', scope: 'root' },
+    },
+  });
+  const fibers = [router, renderer, i18n];
   return {
     ctx,
     container: document.createElement('div'),
@@ -141,14 +151,6 @@ async function bootRouterWithRouteSidebar() {
 }
 
 describe('router host', () => {
-  it('provides the layout as the app route', async () => {
-    const { ctx, dispose } = await boot();
-
-    expect(ctx.routes.snapshot().map(route => route.id)).toContain('app-layout');
-
-    await dispose();
-  });
-
   it('rejects children below an index route instead of dropping them', async () => {
     const { ctx, dispose } = await boot();
     ctx.routes.register({ id: 'index-parent', index: true, Component: () => null });

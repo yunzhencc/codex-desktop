@@ -1,17 +1,11 @@
-import type { Context } from '@deepseek-ai/cordis';
 import type { SlotOwnerHandle, SlotRenderer } from '@yunzhen/cordis-ui-renderer';
 import type { PanelImperativeHandle, PanelSize } from 'react-resizable-panels';
-import type { PanelBounds } from './layout-controller';
+import type { LayoutController, PanelBounds } from './layout-controller';
 import { Slot, SlotOwner } from '@yunzhen/cordis-ui-renderer';
 import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { Group, Panel, Separator } from 'react-resizable-panels';
 import styles from './index.module.css';
-import { getSidebarBounds, getWorkbenchBounds, getWorkspaceWidth, LayoutController, MAIN_MIN_WIDTH } from './layout-controller';
-
-export { LayoutController } from './layout-controller';
-export type { LayoutSnapshot } from './layout-controller';
-
-export const inject = ['slots'];
+import { getSidebarBounds, getWorkbenchBounds, getWorkspaceWidth, MAIN_MIN_WIDTH } from './layout-controller';
 
 const layoutSlots = {
   'sidebar': { kind: 'single', scope: 'root' },
@@ -20,14 +14,7 @@ const layoutSlots = {
   'shell.overlay': { kind: 'list', scope: 'root' },
 } as const;
 
-export function apply(ctx: Context) {
-  const controller = new LayoutController();
-  const slots = ctx.get('uiRenderer')!.slots;
-  controller.Root = () => <LayoutRoot controller={controller} slots={slots} />;
-  ctx.effect(() => ctx.reflect.provide('layout', controller), 'layout.provide()');
-}
-
-function LayoutRoot({ controller, slots }: { controller: LayoutController; slots: SlotRenderer }) {
+export function AppLayoutRoot({ controller, slots }: { controller: LayoutController; slots: SlotRenderer }) {
   const [owner, setOwner] = useState<SlotOwnerHandle>();
   useLayoutEffect(() => {
     const nextOwner = slots.createOwner('app-layout', layoutSlots);

@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { Context } from '@deepseek-ai/cordis';
 import { apply as applyI18n } from '@yunzhen/cordis-ui-i18n';
 import { apply as applyRenderer, inject as rendererInject } from '@yunzhen/cordis-ui-renderer';
+import { apply as applyRouter, inject as routerInject } from '@yunzhen/cordis-ui-router';
 import { act } from 'react';
 import { describe, expect, it } from 'vitest';
 import { apply } from './index';
@@ -13,7 +14,7 @@ Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true });
 
 const Workbench = () => <section>Workbench</section>;
 const EmptyPage = () => null;
-const layoutStyles = readFileSync('packages/ui/layout/src/index.module.css', 'utf8');
+const layoutStyles = readFileSync('plugins/app-layout/src/index.module.css', 'utf8');
 
 async function bootLayout() {
   const ctx = new Context();
@@ -21,16 +22,18 @@ async function bootLayout() {
   await i18n.await();
   const renderer = ctx.plugin({ apply: applyRenderer, inject: rendererInject });
   await renderer.await();
-  const layout = ctx.plugin({ inject: ['slots'], apply });
+  const router = ctx.plugin({ apply: applyRouter, inject: routerInject });
+  await router.await();
+  const layout = ctx.plugin({ inject: ['slots', 'routes'], apply });
   await layout.await();
-  ctx.slots.register({ name: 'root' }, ctx.layout.Root);
-  ctx.slots.inject('main', () => ctx.slots.register({ name: 'main' }, EmptyPage));
+  ctx.routes.register({ id: 'empty', parentId: 'app-layout', index: true, Component: EmptyPage });
 
   return {
     ctx,
     container: document.createElement('div'),
     async dispose() {
       await layout.dispose();
+      await router.dispose();
       await renderer.dispose();
       await i18n.dispose();
     },
@@ -43,16 +46,18 @@ async function bootStaticLayout() {
   await i18n.await();
   const renderer = ctx.plugin({ apply: applyRenderer, inject: rendererInject });
   await renderer.await();
-  const layout = ctx.plugin({ inject: ['slots'], apply });
+  const router = ctx.plugin({ apply: applyRouter, inject: routerInject });
+  await router.await();
+  const layout = ctx.plugin({ inject: ['slots', 'routes'], apply });
   await layout.await();
-  ctx.slots.register({ name: 'root' }, ctx.layout.Root);
-  ctx.slots.inject('main', () => ctx.slots.register({ name: 'main' }, () => <p>Static page</p>));
+  ctx.routes.register({ id: 'static', parentId: 'app-layout', index: true, Component: () => <p>Static page</p> });
 
   return {
     ctx,
     container: document.createElement('div'),
     async dispose() {
       await layout.dispose();
+      await router.dispose();
       await renderer.dispose();
       await i18n.dispose();
     },
@@ -67,7 +72,7 @@ describe('app layout', () => {
     expect(layoutStyles).toContain('.main {\n  box-sizing: border-box;\n  height: 100%;\n  min-width: 0;\n  overflow-x: hidden;\n  overflow-y: auto;');
   });
 
-  it('mounts as a static root without routes', async () => {
+  it('mounts through the business app route', async () => {
     const { ctx, container, dispose } = await bootStaticLayout();
     let unmount!: () => void;
 

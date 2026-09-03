@@ -16,6 +16,7 @@
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
+    "@codex-desktop/app-layout": "workspace:*",
     "@codex-desktop/local-conversation": "workspace:*",
     "@codex-desktop/new-thread": "workspace:*",
     "@base-ui/react": "^1.7.0",
@@ -26,7 +27,6 @@
     "@yunzhen/cordis-client-modules": "workspace:*",
     "@yunzhen/cordis-host-plugin-catalog": "workspace:*",
     "@yunzhen/cordis-ui-i18n": "workspace:*",
-    "@yunzhen/cordis-ui-layout": "workspace:*",
     "@yunzhen/cordis-ui-renderer": "workspace:*",
     "@yunzhen/cordis-ui-router": "workspace:*",
     "@yunzhen/cordis-ui-theme": "workspace:*",

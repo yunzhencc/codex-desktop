@@ -3,7 +3,7 @@
 - id: renderer
   name: '@yunzhen/cordis-ui-renderer'
 - id: layout
-  name: '@yunzhen/cordis-ui-layout'
+  name: '@codex-desktop/app-layout'
 - id: router
   name: '@yunzhen/cordis-ui-router'
 - id: theme

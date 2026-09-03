@@ -1,9 +1,9 @@
 // @vitest-environment jsdom
 
 import type { Context as CordisContext } from '@deepseek-ai/cordis';
+import * as layout from '@codex-desktop/app-layout';
 import { Context } from '@deepseek-ai/cordis';
 import * as i18n from '@yunzhen/cordis-ui-i18n';
-import * as layout from '@yunzhen/cordis-ui-layout';
 import * as renderer from '@yunzhen/cordis-ui-renderer';
 import * as router from '@yunzhen/cordis-ui-router';
 import * as theme from '@yunzhen/cordis-ui-theme';
@@ -28,7 +28,7 @@ afterEach(() => localStorage.clear());
 it('registers the new conversation page as the root index route', async () => {
   const ctx = new Context();
   const fibers: ReturnType<CordisContext['plugin']>[] = [];
-  for (const module of [i18n, renderer, layout, router, theme, newThread]) {
+  for (const module of [i18n, renderer, router, layout, theme, newThread]) {
     const fiber = ctx.plugin(module);
     fibers.push(fiber);
     await fiber.await();
