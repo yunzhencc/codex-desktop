@@ -13,8 +13,8 @@ export function AppearanceSettings({ theme }: { theme: ThemeRuntime }) {
   const snapshot = useSyncExternalStore(theme.subscribe, () => theme.snapshot);
 
   return (
-    <fieldset className={styles.panel}>
-      <legend>{t('appearance.title')}</legend>
+    <section className={styles.panel} aria-labelledby="appearance-theme-heading">
+      <h2 id="appearance-theme-heading">{t('appearance.theme')}</h2>
       <div className={styles.themeOptions}>
         {(['system', 'light', 'dark'] as const).map(value => (
           <label key={value} className={styles.themeOption}>
@@ -51,6 +51,6 @@ export function AppearanceSettings({ theme }: { theme: ThemeRuntime }) {
           </span>
         </label>
       </div>
-    </fieldset>
+    </section>
   );
 }

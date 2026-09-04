@@ -51,6 +51,22 @@ async function boot() {
 }
 
 describe('appearance settings', () => {
+  it('keeps the page title separate from the theme section heading', async () => {
+    const { container, ctx, dispose } = await boot();
+    let unmount!: () => void;
+
+    await act(async () => {
+      unmount = ctx.uiRenderer.mount(container);
+    });
+
+    expect(container.querySelector('h1')?.textContent).toBe('外观');
+    expect(container.querySelector('main h2')?.textContent).toBe('主题');
+    expect(container.querySelector('fieldset')).toBeNull();
+
+    await act(async () => unmount());
+    await dispose();
+  });
+
   it('renders in Settings > Appearance and updates the active theme', async () => {
     const { container, ctx, dispose } = await boot();
     let unmount!: () => void;

@@ -8,8 +8,8 @@
   border: 0;
 }
 
-.panel legend {
-  padding: 0;
+.panel h2 {
+  margin: 0;
   font-size: 15px;
   font-weight: 600;
 }
