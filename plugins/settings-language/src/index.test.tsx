@@ -56,17 +56,22 @@ describe('language settings', () => {
     expect(container.querySelector('h1')?.textContent).toBe('常规');
     expect(container.querySelector('[data-settings-menu]')?.textContent).toContain('常规');
     expect(container.textContent).toContain('应用 UI 语言');
-    const select = container.querySelector('select')!;
-    expect(select.value).toBe('zh-CN');
+    expect(container.querySelector('select')).toBeNull();
+    const trigger = container.querySelector<HTMLButtonElement>('[data-slot="select-trigger"]')!;
+    expect(trigger.textContent).toContain('简体中文');
 
     await act(async () => {
-      select.value = 'en-US';
-      select.dispatchEvent(new Event('change', { bubbles: true }));
+      trigger.click();
+    });
+    const english = [...document.body.querySelectorAll<HTMLElement>('[role="option"]')].find(option => option.textContent === 'English')!;
+
+    await act(async () => {
+      english.click();
     });
 
     expect(container.querySelector('h1')?.textContent).toBe('General');
     expect(container.textContent).toContain('Application UI language');
-    expect(select.value).toBe('en-US');
+    expect(trigger.textContent).toContain('English');
 
     await act(async () => unmount());
     await dispose();

@@ -1,6 +1,12 @@
 import type { I18nRuntime, Locale } from '@yunzhen/cordis-ui-i18n';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@yunzhen/shadcn-ui/components/select';
 import { useTranslation } from 'react-i18next';
 import styles from './language-settings.module.css';
+
+const localeOptions = [
+  { label: '简体中文', value: 'zh-CN' },
+  { label: 'English', value: 'en-US' },
+] as const;
 
 export function LanguageSettings({ i18n }: { i18n: I18nRuntime }) {
   const { t } = useTranslation();
@@ -10,10 +16,14 @@ export function LanguageSettings({ i18n }: { i18n: I18nRuntime }) {
         <h2>{t('language.title')}</h2>
         <p>{t('language.description')}</p>
       </div>
-      <select className={styles.select} aria-label={t('language.label')} value={i18n.locale} onChange={event => void i18n.setLocale(event.currentTarget.value as Locale)}>
-        <option value="zh-CN">简体中文</option>
-        <option value="en-US">English</option>
-      </select>
+      <Select items={localeOptions} value={i18n.locale} onValueChange={value => void i18n.setLocale(value as Locale)}>
+        <SelectTrigger className={styles.select} aria-label={t('language.label')}>
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          {localeOptions.map(({ label, value }) => <SelectItem key={value} value={value}>{label}</SelectItem>)}
+        </SelectContent>
+      </Select>
     </section>
   );
 }

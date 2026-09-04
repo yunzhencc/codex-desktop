@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { Button } from '@yunzhen/shadcn-ui/components/button';
 
 function App() {
   return (

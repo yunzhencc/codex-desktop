@@ -1,0 +1,16 @@
+{
+  "name": "@yunzhen/shadcn-ui",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./components/*": "./src/components/*.tsx",
+    "./lib/*": "./src/lib/*.ts"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.7.0",
+    "class-variance-authority": "^0.7.1",
+    "cn": "^0.2.4",
+    "lucide-react": "^1.39.0",
+    "react": "^19.2.8"
+  }
+}

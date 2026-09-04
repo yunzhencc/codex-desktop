@@ -68,6 +68,9 @@ importers:
       '@yunzhen/cordis-ui-theme':
         specifier: workspace:*
         version: link:packages/ui/theme
+      '@yunzhen/shadcn-ui':
+        specifier: workspace:*
+        version: link:packages/shadcn-ui
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -183,6 +186,24 @@ importers:
       yaml:
         specifier: ^2.9.0
         version: 2.9.0
+
+  packages/shadcn-ui:
+    dependencies:
+      '@base-ui/react':
+        specifier: ^1.7.0
+        version: 1.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
+      cn:
+        specifier: ^0.2.4
+        version: 0.2.4
+      lucide-react:
+        specifier: ^1.39.0
+        version: 1.39.0(react@19.2.8)
+      react:
+        specifier: ^19.2.8
+        version: 19.2.8
 
   packages/ui/i18n:
     dependencies:
@@ -435,6 +456,9 @@ importers:
       '@yunzhen/cordis-ui-renderer':
         specifier: workspace:*
         version: link:../../packages/ui/renderer
+      '@yunzhen/shadcn-ui':
+        specifier: workspace:*
+        version: link:../../packages/shadcn-ui
       react:
         specifier: ^19.2.8
         version: 19.2.8

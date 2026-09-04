@@ -10,6 +10,7 @@
     "@codex-desktop/settings-general": "workspace:*",
     "@codex-desktop/settings-layout": "workspace:*",
     "@deepseek-ai/cordis": "^4.0.2",
+    "@yunzhen/shadcn-ui": "workspace:*",
     "@yunzhen/cordis-ui-i18n": "workspace:*",
     "@yunzhen/cordis-ui-renderer": "workspace:*",
     "react": "^19.2.8",

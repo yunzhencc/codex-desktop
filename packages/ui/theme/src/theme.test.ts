@@ -59,6 +59,7 @@ describe('themeRuntime', () => {
 
     expect(theme.snapshot).toMatchObject({ preference: 'system', resolvedTheme: 'dark', fontSize: 14 });
     expect(document.documentElement.dataset.theme).toBe('dark');
+    expect(document.documentElement.classList.contains('dark')).toBe(true);
   });
 
   it('restores valid storage and falls back from invalid font size', () => {
@@ -73,6 +74,7 @@ describe('themeRuntime', () => {
     mediaQuery.emit(true);
     expect(theme.snapshot.resolvedTheme).toBe('dark');
     theme.setTheme('light');
+    expect(document.documentElement.classList.contains('dark')).toBe(false);
     mediaQuery.emit(false);
     expect(theme.snapshot.resolvedTheme).toBe('light');
   });

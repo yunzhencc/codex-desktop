@@ -94,6 +94,7 @@ export class ThemeRuntime {
   private apply() {
     const { fontSize, resolvedTheme } = this.snapshot;
     document.documentElement.dataset.theme = resolvedTheme;
+    document.documentElement.classList.toggle('dark', resolvedTheme === 'dark');
     document.documentElement.style.colorScheme = resolvedTheme;
     document.documentElement.style.setProperty('--app-content-font-size', `${fontSize}px`);
     for (const listener of [...this.listeners]) listener();

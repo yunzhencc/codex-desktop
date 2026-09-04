@@ -11,6 +11,7 @@ trustPolicyExclude:
 shellEmulator: true
 
 packages:
+  - packages/shadcn-ui
   - packages/*/*
   - plugins/*
 

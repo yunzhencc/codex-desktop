@@ -5,6 +5,7 @@
 
 @custom-variant dark (&:is(.dark *));
 @source "./";
+@source "../packages/shadcn-ui/src";
 
 @theme inline {
   --font-heading: var(--font-sans);

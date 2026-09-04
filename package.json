@@ -30,6 +30,7 @@
     "@fontsource-variable/geist": "^5.3.0",
     "@tauri-apps/api": "^2.11.1",
     "@tauri-apps/plugin-opener": "^2.5.5",
+    "@yunzhen/shadcn-ui": "workspace:*",
     "@yunzhen/cordis-client-modules": "workspace:*",
     "@yunzhen/cordis-host-plugin-catalog": "workspace:*",
     "@yunzhen/cordis-ui-i18n": "workspace:*",
