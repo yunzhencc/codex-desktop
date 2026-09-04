@@ -23,7 +23,7 @@
 .item:focus-visible,
 .close:hover,
 .close:focus-visible {
-  background: var(--app-accent-surface);
+  background: var(--sidebar-footer-hover, var(--app-accent-surface));
   outline: none;
 }
 

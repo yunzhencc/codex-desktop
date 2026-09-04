@@ -14,7 +14,7 @@ export function SidebarHelp() {
     <>
       <Popover.Root open={menuOpen} onOpenChange={setMenuOpen}>
         <Popover.Trigger className={styles.trigger} data-sidebar-help-trigger aria-label={t('sidebarHelp.help')}>
-          <CircleHelp size={20} />
+          <CircleHelp size={18} />
         </Popover.Trigger>
         <Popover.Portal>
           <Popover.Positioner align="start" side="top" sideOffset={6}>
