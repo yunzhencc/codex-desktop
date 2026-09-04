@@ -12,9 +12,9 @@ export const inject = ['i18n', 'routes'];
 
 export function apply(ctx: Context) {
   ctx.i18n.register(messages);
-  ctx.routes.inject('app-layout', () => ctx.routes.register({
+  ctx.routes.inject('conversation', () => ctx.routes.register({
     id: 'new-thread',
-    parentId: 'app-layout',
+    parentId: 'conversation',
     index: true,
     Component: NewThreadPage,
   }));

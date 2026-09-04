@@ -1,0 +1,32 @@
+.root {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.content {
+  flex: 1 0 auto;
+  min-height: 0;
+}
+
+.composerSeat {
+  width: min(100% - 48px, 920px);
+  margin: 0 auto 24px;
+}
+
+.context {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 16px;
+  color: var(--app-text-muted);
+  font-size: 14px;
+  background: var(--app-surface-elevated);
+  border-radius: 16px 16px 0 0;
+}
+
+[data-conversation-surface='home'] .composerSeat {
+  margin-top: auto;
+}

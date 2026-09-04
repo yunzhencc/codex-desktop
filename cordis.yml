@@ -20,6 +20,8 @@
   name: '@codex-desktop/settings-appearance'
 - id: settings-language
   name: '@codex-desktop/settings-language'
+- id: conversation
+  name: '@codex-desktop/conversation'
 - id: new-thread
   name: '@codex-desktop/new-thread'
 - id: local-conversation

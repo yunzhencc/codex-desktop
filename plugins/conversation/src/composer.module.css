@@ -1,0 +1,59 @@
+.root {
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid var(--app-border);
+  border-radius: 20px;
+  background: var(--app-input);
+  box-shadow: var(--app-elevation);
+}
+
+.input {
+  position: relative;
+  min-height: 2.75rem;
+  padding: 12px;
+}
+
+.input :global(.ProseMirror) {
+  min-height: 2.75rem;
+  outline: none;
+  white-space: pre-wrap;
+}
+
+.input :global(.ProseMirror p) {
+  margin: 0;
+}
+
+.placeholder {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  color: var(--app-text-muted);
+  pointer-events: none;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  min-height: 32px;
+  padding: 0 8px;
+  margin-bottom: 8px;
+}
+
+.submit {
+  justify-self: end;
+  display: grid;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: var(--app-contrast-text);
+  cursor: pointer;
+  background: var(--app-contrast);
+  border: 0;
+  border-radius: 50%;
+}
+
+.submit:disabled {
+  cursor: default;
+  opacity: 0.5;
+}

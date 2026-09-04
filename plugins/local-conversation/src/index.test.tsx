@@ -9,6 +9,7 @@ import * as router from '@yunzhen/cordis-ui-router';
 import * as theme from '@yunzhen/cordis-ui-theme';
 import { act } from 'react';
 import { afterEach, beforeEach, expect, it } from 'vitest';
+import * as conversation from '../../conversation/src';
 import * as localConversation from './index';
 
 Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true });
@@ -28,7 +29,7 @@ afterEach(() => localStorage.clear());
 it('renders the conversation identified by /local/:conversationId', async () => {
   const ctx = new Context();
   const fibers: ReturnType<CordisContext['plugin']>[] = [];
-  for (const module of [i18n, renderer, router, layout, theme, localConversation]) {
+  for (const module of [i18n, renderer, router, layout, theme, conversation, localConversation]) {
     const fiber = ctx.plugin(module);
     fibers.push(fiber);
     await fiber.await();

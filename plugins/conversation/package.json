@@ -1,16 +1,22 @@
 {
-  "name": "@codex-desktop/local-conversation",
+  "name": "@codex-desktop/conversation",
   "type": "module",
   "private": true,
   "exports": {
-    ".": "./src/index.tsx",
-    "./client": "./src/index.tsx"
+    ".": "./src/index.ts",
+    "./client": "./src/index.ts"
   },
   "dependencies": {
-    "@codex-desktop/conversation": "workspace:*",
+    "@codex-desktop/app-layout": "workspace:*",
     "@deepseek-ai/cordis": "^4.0.2",
     "@yunzhen/cordis-ui-i18n": "workspace:*",
     "@yunzhen/cordis-ui-router": "workspace:*",
+    "prosemirror-commands": "^1.7.2",
+    "prosemirror-history": "^1.5.0",
+    "prosemirror-keymap": "^1.2.3",
+    "prosemirror-model": "^1.25.11",
+    "prosemirror-state": "^1.4.4",
+    "prosemirror-view": "^1.42.3",
     "react": "^19.2.8",
     "react-i18next": "^16.5.9",
     "react-router-dom": "^7.18.3"
@@ -21,7 +27,7 @@
       "inject": [
         "@yunzhen/cordis-ui-i18n",
         "@yunzhen/cordis-ui-router",
-        "@codex-desktop/conversation"
+        "@codex-desktop/app-layout"
       ],
       "immediately": false
     }
