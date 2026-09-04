@@ -212,6 +212,24 @@ describe('router host', () => {
     await dispose();
   });
 
+  it('keeps the footer outside the sidebar scroll region', async () => {
+    window.history.replaceState({}, '', '/settings');
+    const { ctx, container, dispose } = await bootRouterWithLayout();
+    let unmount!: () => void;
+
+    await act(async () => {
+      unmount = ctx.uiRenderer.mount(container);
+    });
+
+    const scrollRegion = container.querySelector('[data-sidebar-scroll]')!;
+    expect(scrollRegion.querySelector('nav')).not.toBeNull();
+    expect(scrollRegion.querySelector('footer')).toBeNull();
+    expect(container.querySelector('footer')?.parentElement).not.toBe(scrollRegion);
+
+    await act(async () => unmount());
+    await dispose();
+  });
+
   it('replaces the application sidebar for a matched route and restores it when leaving', async () => {
     window.history.replaceState({}, '', '/settings/appearance');
     const { ctx, container, dispose } = await bootRouterWithRouteSidebar();

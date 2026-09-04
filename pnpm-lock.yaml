@@ -26,6 +26,9 @@ importers:
       '@codex-desktop/new-thread':
         specifier: workspace:*
         version: link:plugins/new-thread
+      '@codex-desktop/project-sessions':
+        specifier: workspace:*
+        version: link:plugins/project-sessions
       '@codex-desktop/settings-appearance':
         specifier: workspace:*
         version: link:plugins/settings-appearance
@@ -437,6 +440,37 @@ importers:
       react-i18next:
         specifier: ^16.5.9
         version: 16.6.6(i18next@25.10.10(typescript@6.0.3))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@6.0.3)
+
+  plugins/project-sessions:
+    dependencies:
+      '@deepseek-ai/cordis':
+        specifier: ^4.0.2
+        version: 4.0.2
+      '@tauri-apps/api':
+        specifier: ^2.11.1
+        version: 2.11.1
+      '@yunzhen/cordis-ui-i18n':
+        specifier: workspace:*
+        version: link:../../packages/cordis/ui/i18n
+      '@yunzhen/cordis-ui-renderer':
+        specifier: workspace:*
+        version: link:../../packages/cordis/ui/renderer
+      lucide-react:
+        specifier: ^1.39.0
+        version: 1.39.0(react@19.2.8)
+      react:
+        specifier: ^19.2.8
+        version: 19.2.8
+      react-i18next:
+        specifier: ^16.5.9
+        version: 16.6.6(i18next@25.10.10(typescript@6.0.3))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@6.0.3)
+      react-router-dom:
+        specifier: ^7.18.3
+        version: 7.18.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+    devDependencies:
+      react-dom:
+        specifier: ^19.2.8
+        version: 19.2.8(react@19.2.8)
 
   plugins/settings-appearance:
     dependencies:

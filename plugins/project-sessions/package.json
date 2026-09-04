@@ -1,0 +1,29 @@
+{
+  "name": "@codex-desktop/project-sessions",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.tsx",
+    "./client": "./src/index.tsx"
+  },
+  "dependencies": {
+    "@deepseek-ai/cordis": "^4.0.2",
+    "@tauri-apps/api": "^2.11.1",
+    "@yunzhen/cordis-ui-i18n": "workspace:*",
+    "@yunzhen/cordis-ui-renderer": "workspace:*",
+    "lucide-react": "^1.39.0",
+    "react": "^19.2.8",
+    "react-i18next": "^16.5.9",
+    "react-router-dom": "^7.18.3"
+  },
+  "devDependencies": {
+    "react-dom": "^19.2.8"
+  },
+  "yunzhen": {
+    "client": {
+      "platform": "web",
+      "inject": ["@yunzhen/cordis-ui-i18n", "@yunzhen/cordis-ui-renderer", "@yunzhen/cordis-ui-router"],
+      "immediately": false
+    }
+  }
+}

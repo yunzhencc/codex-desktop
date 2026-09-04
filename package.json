@@ -25,6 +25,7 @@
     "@codex-desktop/conversation": "workspace:*",
     "@codex-desktop/local-conversation": "workspace:*",
     "@codex-desktop/new-thread": "workspace:*",
+    "@codex-desktop/project-sessions": "workspace:*",
     "@codex-desktop/settings-appearance": "workspace:*",
     "@codex-desktop/settings-general": "workspace:*",
     "@codex-desktop/settings-language": "workspace:*",

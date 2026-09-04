@@ -88,12 +88,14 @@ function NavigationSidebar({ routes }: { routes: RouteRenderer }) {
 
   return (
     <div className={styles.sidebar}>
-      <nav className={styles.navigation}>
-        {links.map(route => (
-          <NavLink key={route.id} to={routeHref(route, byId)}>{route.navigation!.labelKey ? t(route.navigation!.labelKey) : route.navigation!.label}</NavLink>
-        ))}
-        <Slot name="sidebar.navigation" />
-      </nav>
+      <div className={styles.scroll} data-sidebar-scroll>
+        <nav className={styles.navigation}>
+          {links.map(route => (
+            <NavLink key={route.id} to={routeHref(route, byId)}>{route.navigation!.labelKey ? t(route.navigation!.labelKey) : route.navigation!.label}</NavLink>
+          ))}
+          <Slot name="sidebar.navigation" />
+        </nav>
+      </div>
       <footer className={styles.footer}><Slot name="sidebar.footer" /></footer>
     </div>
   );
