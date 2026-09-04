@@ -4,6 +4,25 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style data-theme-bootstrap>
+      html, body { background: #fff; }
+      html[data-theme="dark"], html[data-theme="dark"] body { background: #151517; }
+    </style>
+    <script data-theme-bootstrap>
+      (() => {
+        let preference = 'system';
+        try {
+          const stored = localStorage.getItem('@yunzhen/cordis-ui-theme:preference');
+          if (stored === 'light' || stored === 'dark' || stored === 'system') preference = stored;
+        }
+        catch {}
+        const dark = preference === 'dark' || (preference === 'system' && typeof matchMedia !== 'undefined' && matchMedia('(prefers-color-scheme: dark)').matches);
+        const root = document.documentElement;
+        root.dataset.theme = dark ? 'dark' : 'light';
+        root.classList.toggle('dark', dark);
+        root.style.colorScheme = dark ? 'dark' : 'light';
+      })();
+    </script>
     <title>Tauri + React + Typescript</title>
   </head>
 
