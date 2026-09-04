@@ -4,7 +4,8 @@
   "private": true,
   "exports": {
     "./components/*": "./src/components/*.tsx",
-    "./lib/*": "./src/lib/*.ts"
+    "./lib/*": "./src/lib/*.ts",
+    "./styles.css": "./src/styles.css"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

@@ -5,18 +5,19 @@
   "tsx": true,
   "tailwind": {
     "config": "",
-    "css": "../../src/styles.css",
+    "css": "src/styles.css",
     "baseColor": "neutral",
-    "cssVariables": true,
-    "prefix": ""
+    "cssVariables": true
   },
   "iconLibrary": "lucide",
-  "rtl": false,
   "aliases": {
     "components": "@yunzhen/shadcn-ui/components",
     "utils": "@yunzhen/shadcn-ui/lib/utils",
-    "ui": "@yunzhen/shadcn-ui/components",
-    "lib": "@yunzhen/shadcn-ui/lib"
+    "hooks": "@yunzhen/shadcn-ui/hooks",
+    "lib": "@yunzhen/shadcn-ui/lib",
+    "ui": "@@yunzhen/shadcn-ui/components"
   },
-  "registries": {}
+  "rtl": false,
+  "menuColor": "default",
+  "menuAccent": "subtle"
 }
