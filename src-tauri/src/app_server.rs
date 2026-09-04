@@ -72,6 +72,12 @@ pub struct ThreadListRequest {
     parent_thread_id: Option<String>,
 }
 
+#[derive(Deserialize)]
+pub struct ProjectRequest {
+    name: String,
+    roots: Vec<ProjectRoot>,
+}
+
 #[derive(Deserialize, Serialize)]
 pub struct ProjectRecord {
     id: String,
@@ -260,6 +266,31 @@ impl AppServer {
         self.collect_pages("project/list", json!({ "limit": 100 }))
     }
 
+    fn create_project(&self, request: ProjectRequest) -> Result<(), String> {
+        self.request(
+            "project/create",
+            json!({
+                "name": request.name,
+                "roots": request.roots,
+                "idempotencyKey": format!("codex-desktop-{}", self.next_id.fetch_add(1, Ordering::Relaxed)),
+            }),
+        )?;
+        Ok(())
+    }
+
+    fn update_project(&self, project_id: String, request: ProjectRequest) -> Result<(), String> {
+        self.request(
+            "project/update",
+            json!({ "projectId": project_id, "name": request.name, "roots": request.roots }),
+        )?;
+        Ok(())
+    }
+
+    fn delete_project(&self, project_id: String) -> Result<(), String> {
+        self.request("project/delete", json!({ "projectId": project_id }))?;
+        Ok(())
+    }
+
     fn list_threads(&self, request: ThreadListRequest) -> Result<Vec<ThreadRecord>, String> {
         self.collect_pages(
             "thread/list",
@@ -366,6 +397,34 @@ pub fn app_server_list_projects(
     state: State<'_, AppServerState>,
 ) -> Result<Vec<ProjectRecord>, String> {
     get_or_start(&app, &state)?.list_projects()
+}
+
+#[tauri::command]
+pub fn app_server_create_project(
+    app: AppHandle,
+    state: State<'_, AppServerState>,
+    request: ProjectRequest,
+) -> Result<(), String> {
+    get_or_start(&app, &state)?.create_project(request)
+}
+
+#[tauri::command]
+pub fn app_server_update_project(
+    app: AppHandle,
+    state: State<'_, AppServerState>,
+    project_id: String,
+    request: ProjectRequest,
+) -> Result<(), String> {
+    get_or_start(&app, &state)?.update_project(project_id, request)
+}
+
+#[tauri::command]
+pub fn app_server_delete_project(
+    app: AppHandle,
+    state: State<'_, AppServerState>,
+    project_id: String,
+) -> Result<(), String> {
+    get_or_start(&app, &state)?.delete_project(project_id)
 }
 
 #[tauri::command]

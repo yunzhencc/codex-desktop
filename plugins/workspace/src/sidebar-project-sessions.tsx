@@ -1,13 +1,15 @@
 import type { ProjectSessionStore } from './thread-tree-store';
-import { Folder } from 'lucide-react';
-import { useEffect, useSyncExternalStore } from 'react';
+import { Folder, Plus } from 'lucide-react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import styles from './sidebar-project-sessions.module.css';
+import { WorkspaceDialog } from './workspace-dialog';
 
 export function ProjectSessionsSidebar({ store }: { store: ProjectSessionStore }) {
   const { t } = useTranslation();
   const snapshot = useSyncExternalStore(store.subscribe, store.snapshot, store.snapshot);
+  const [createOpen, setCreateOpen] = useState(false);
 
   useEffect(() => {
     void store.loadProjects();
@@ -15,6 +17,10 @@ export function ProjectSessionsSidebar({ store }: { store: ProjectSessionStore }
 
   return (
     <section aria-label={t('projectSessions.title')} className={styles.root} data-project-sessions>
+      <button className={styles.create} data-workspace-create type="button" onClick={() => setCreateOpen(true)}>
+        <Plus size={16} />
+        {t('workspace.create')}
+      </button>
       {snapshot.error && <p className={styles.error} role="status">{t('projectSessions.unavailable')}</p>}
       {snapshot.projects.map(project => (
         <div key={project.id} className={styles.project}>
@@ -41,6 +47,7 @@ export function ProjectSessionsSidebar({ store }: { store: ProjectSessionStore }
           )}
         </div>
       ))}
+      <WorkspaceDialog open={createOpen} store={store} onOpenChange={setCreateOpen} />
     </section>
   );
 }

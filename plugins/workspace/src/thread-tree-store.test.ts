@@ -3,6 +3,49 @@ import { describe, expect, it } from 'vitest';
 import { ProjectSessionStore } from './thread-tree-store';
 
 describe('project session tree', () => {
+  it('refreshes projects after creating one', async () => {
+    const client = new FakeProjectSessionClient();
+    const store = new ProjectSessionStore(client);
+
+    await store.createProject({
+      name: 'Desktop',
+      roots: [{ path: '/workspace/codex-desktop' }],
+    });
+
+    expect(client.createRequests).toEqual([{
+      name: 'Desktop',
+      roots: [{ path: '/workspace/codex-desktop' }],
+    }]);
+    expect(store.snapshot().projects.map(project => project.name)).toContain('Desktop');
+  });
+
+  it('persists the primary folder by placing it first during an edit', async () => {
+    const client = new FakeProjectSessionClient();
+    const store = new ProjectSessionStore(client);
+
+    await store.updateProject('beta', {
+      name: 'Beta',
+      roots: [{ path: '/workspace/contract' }, { path: '/workspace/beta' }],
+    });
+
+    expect(client.updateRequests).toEqual([{
+      projectId: 'beta',
+      name: 'Beta',
+      roots: [{ path: '/workspace/contract' }, { path: '/workspace/beta' }],
+    }]);
+  });
+
+  it('refreshes the tree after removing a project', async () => {
+    const client = new FakeProjectSessionClient();
+    const store = new ProjectSessionStore(client);
+    await store.loadProjects();
+
+    await store.deleteProject('beta');
+
+    expect(client.deleteRequests).toEqual(['beta']);
+    expect(store.snapshot().projects.map(project => project.id)).not.toContain('beta');
+  });
+
   it('orders projects and loads root threads only when a project is expanded', async () => {
     const client = new FakeProjectSessionClient();
     const store = new ProjectSessionStore(client);
@@ -53,6 +96,9 @@ describe('project session tree', () => {
   it('keeps the sidebar stable when app-server cannot list projects', async () => {
     const store = new ProjectSessionStore({
       listProjects: async () => { throw new Error('Codex is unavailable'); },
+      createProject: async () => {},
+      updateProject: async () => {},
+      deleteProject: async () => {},
       listThreads: async () => [],
       syncUnassignedThreads: async () => ({ assigned: 0, skipped: 0, failed: 0 }),
     });
@@ -87,16 +133,33 @@ describe('project session tree', () => {
 });
 
 class FakeProjectSessionClient implements ProjectSessionClient {
+  readonly createRequests: Array<{ name: string; roots: readonly { path: string }[] }> = [];
+  readonly deleteRequests: string[] = [];
+  readonly updateRequests: Array<{ projectId: string; name: string; roots: readonly { path: string }[] }> = [];
   readonly threadRequests: Array<{ projectId: string; parentThreadId: string | null }> = [];
   syncs = 0;
   threadError: Error | undefined;
-  projects = [
+  projects: Array<{ id: string; name: string; roots: readonly { path: string }[]; position: number }> = [
     { id: 'beta', name: 'Beta', roots: [], position: 2 },
     { id: 'alpha', name: 'Alpha', roots: [], position: 1 },
   ];
 
   async listProjects() {
     return this.projects;
+  }
+
+  async createProject(request: { name: string; roots: readonly { path: string }[] }) {
+    this.createRequests.push(request);
+    this.projects = [...this.projects, { id: 'desktop', name: request.name, roots: request.roots, position: this.projects.length + 1 }];
+  }
+
+  async updateProject(projectId: string, request: { name: string; roots: readonly { path: string }[] }) {
+    this.updateRequests.push({ projectId, ...request });
+  }
+
+  async deleteProject(projectId: string) {
+    this.deleteRequests.push(projectId);
+    this.projects = this.projects.filter(project => project.id !== projectId);
   }
 
   async listThreads(request: { projectId: string; parentThreadId: string | null }) {

@@ -1,5 +1,5 @@
 {
-  "name": "@codex-desktop/project-sessions",
+  "name": "@codex-desktop/workspace",
   "type": "module",
   "private": true,
   "exports": {
@@ -7,8 +7,11 @@
     "./client": "./src/index.tsx"
   },
   "dependencies": {
+    "@base-ui/react": "^1.7.0",
     "@deepseek-ai/cordis": "^4.0.2",
     "@tauri-apps/api": "^2.11.1",
+    "@tauri-apps/plugin-dialog": "^2.7.3",
+    "@yunzhen/shadcn-ui": "workspace:*",
     "@yunzhen/cordis-ui-i18n": "workspace:*",
     "@yunzhen/cordis-ui-renderer": "workspace:*",
     "lucide-react": "^1.39.0",

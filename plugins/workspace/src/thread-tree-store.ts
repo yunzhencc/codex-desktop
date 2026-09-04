@@ -1,5 +1,8 @@
 export interface ProjectSessionClient {
   listProjects: () => Promise<readonly ProjectRecord[]>;
+  createProject: (request: ProjectCreateRequest) => Promise<void>;
+  updateProject: (projectId: string, request: ProjectCreateRequest) => Promise<void>;
+  deleteProject: (projectId: string) => Promise<void>;
   listThreads: (request: ThreadListRequest) => Promise<readonly ThreadRecord[]>;
   syncUnassignedThreads: () => Promise<ThreadProjectSyncResult>;
 }
@@ -13,6 +16,11 @@ export interface ProjectRecord {
   readonly name: string;
   readonly roots: readonly ProjectRoot[];
   readonly position: number;
+}
+
+export interface ProjectCreateRequest {
+  readonly name: string;
+  readonly roots: readonly ProjectRoot[];
 }
 
 export interface ThreadListRequest {
@@ -88,6 +96,21 @@ export class ProjectSessionStore {
     catch (error) {
       this.update(this.current.projects, error instanceof Error ? error.message : 'Unable to load projects');
     }
+  }
+
+  async createProject(request: ProjectCreateRequest) {
+    await this.client.createProject(request);
+    await this.loadProjects();
+  }
+
+  async updateProject(projectId: string, request: ProjectCreateRequest) {
+    await this.client.updateProject(projectId, request);
+    await this.loadProjects();
+  }
+
+  async deleteProject(projectId: string) {
+    await this.client.deleteProject(projectId);
+    await this.loadProjects();
   }
 
   async toggleProject(projectId: string) {

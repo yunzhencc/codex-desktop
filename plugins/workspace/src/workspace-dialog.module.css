@@ -1,0 +1,13 @@
+.backdrop { position: fixed; inset: 0; background: color-mix(in srgb, black 60%, transparent); }
+.dialog { position: fixed; top: 50%; left: 50%; width: min(560px, calc(100vw - 32px)); transform: translate(-50%, -50%); border: 1px solid var(--app-border); border-radius: 18px; background: var(--app-background); padding: 24px; }
+.header, .footer, .root, .add { display: flex; align-items: center; gap: 10px; }
+.header { justify-content: space-between; font-size: 24px; }
+.close, .root button, .add { border: 0; background: transparent; color: inherit; cursor: pointer; }
+.field, .sources { display: grid; gap: 8px; margin-top: 20px; }
+.field input { border: 1px solid var(--app-border); border-radius: 10px; background: transparent; color: inherit; padding: 10px; }
+.list { overflow: hidden; border: 1px solid var(--app-border); border-radius: 10px; }
+.root, .add { min-height: 48px; padding: 0 12px; border-bottom: 1px solid var(--app-border); }
+.root span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.root em, .root button:not(:last-child) { border: 1px solid var(--app-border); border-radius: 8px; padding: 4px 8px; font-style: normal; }
+.add { width: 100%; border-bottom: 0; }
+.footer { justify-content: flex-end; margin-top: 24px; }

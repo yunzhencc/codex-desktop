@@ -33,7 +33,27 @@ it('reveals a project session as a local conversation link after expansion', asy
   await act(async () => root.unmount());
 });
 
+it('offers a workspace creation entry point', async () => {
+  const store = new ProjectSessionStore(new SidebarClient());
+  const container = document.createElement('div');
+  const root = createRoot(container);
+
+  await act(async () => {
+    root.render(<BrowserRouter><ProjectSessionsSidebar store={store} /></BrowserRouter>);
+  });
+
+  expect(container.querySelector('[data-workspace-create]')).not.toBeNull();
+
+  await act(async () => root.unmount());
+});
+
 class SidebarClient implements ProjectSessionClient {
+  async createProject() {}
+
+  async updateProject() {}
+
+  async deleteProject() {}
+
   async listProjects() {
     return [{ id: 'alpha', name: 'Alpha', roots: [], position: 1 }];
   }

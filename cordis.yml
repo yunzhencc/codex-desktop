@@ -22,8 +22,8 @@
   name: '@codex-desktop/settings-language'
 - id: conversation
   name: '@codex-desktop/conversation'
-- id: project-sessions
-  name: '@codex-desktop/project-sessions'
+- id: workspace
+  name: '@codex-desktop/workspace'
 - id: new-thread
   name: '@codex-desktop/new-thread'
 - id: local-conversation

@@ -8,6 +8,23 @@
   min-width: 0;
 }
 
+.create {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 30px;
+  padding: 5px 6px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.create:hover,
+.create:focus-visible { background: var(--sidebar-footer-hover, var(--app-accent-surface)); outline: none; }
+
 .projectButton,
 .thread {
   display: flex;
