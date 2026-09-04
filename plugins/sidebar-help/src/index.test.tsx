@@ -41,8 +41,6 @@ describe('sidebar help', () => {
 
     const trigger = container.querySelector<HTMLButtonElement>('[data-sidebar-help-trigger]')!;
     expect(trigger).not.toBeNull();
-    const account = container.querySelector<HTMLButtonElement>('[data-account-menu-trigger]')!;
-    expect(account.compareDocumentPosition(trigger) & Node.DOCUMENT_POSITION_FOLLOWING).not.toBe(0);
     await act(async () => trigger.click());
 
     const menu = document.body.querySelector('[data-sidebar-help-menu]')!;

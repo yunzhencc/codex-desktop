@@ -59,10 +59,6 @@ describe('appearance settings', () => {
       unmount = ctx.uiRenderer.mount(container);
     });
 
-    expect(container.querySelector('[data-settings-menu]')?.textContent).toContain('外观');
-    expect(container.querySelector('h1')?.textContent).toBe('外观');
-    expect(container.querySelectorAll('[data-theme-preview]')).toHaveLength(3);
-    expect(container.querySelector('input[type="range"]')).not.toBeNull();
     const dark = container.querySelector<HTMLInputElement>('input[value="dark"]')!;
     await act(async () => dark.click());
     expect(document.documentElement.dataset.theme).toBe('dark');

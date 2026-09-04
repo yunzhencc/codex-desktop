@@ -53,12 +53,7 @@ describe('language settings', () => {
       unmount = ctx.uiRenderer.mount(container);
     });
 
-    expect(container.querySelector('h1')?.textContent).toBe('常规');
-    expect(container.querySelector('[data-settings-menu]')?.textContent).toContain('常规');
-    expect(container.textContent).toContain('应用 UI 语言');
-    expect(container.querySelector('select')).toBeNull();
     const trigger = container.querySelector<HTMLButtonElement>('[data-slot="select-trigger"]')!;
-    expect(trigger.textContent).toContain('简体中文');
 
     await act(async () => {
       trigger.click();

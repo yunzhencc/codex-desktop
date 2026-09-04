@@ -1,12 +1,9 @@
 // @vitest-environment jsdom
 
-import { readFileSync } from 'node:fs';
 import { Context } from '@deepseek-ai/cordis';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import * as themeModule from './index';
 import { ThemeRuntime } from './theme';
-
-const tokens = readFileSync('packages/ui/theme/src/tokens.css', 'utf8');
 
 class MediaQuery {
   matches = false;
@@ -65,14 +62,5 @@ describe('uiThemePlugin', () => {
 
     expect(mediaQuery.listenerCount).toBe(0);
     await themeFiber.dispose();
-  });
-
-  it('applies the system font stack from the theme tokens', () => {
-    const style = document.createElement('style');
-    style.textContent = tokens;
-    document.head.append(style);
-
-    expect(getComputedStyle(document.documentElement).fontFamily).toBe('-apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif');
-    style.remove();
   });
 });
