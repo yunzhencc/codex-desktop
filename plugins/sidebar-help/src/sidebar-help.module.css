@@ -13,8 +13,8 @@
 
 .trigger {
   flex: 0 0 auto;
-  width: 40px;
-  min-height: 40px;
+  width: 32px;
+  height: 32px;
 }
 
 .trigger:hover,

@@ -69,6 +69,8 @@ describe('app layout', () => {
     expect(layoutStyles).toContain('.layout {\n  position: relative;\n  height: 100dvh;\n  overflow: hidden;\n}');
     expect(layoutStyles).toContain('.group {\n  height: 100%;\n}');
     expect(layoutStyles).toContain('.sidebar,\n.workbench {\n  box-sizing: border-box;\n  height: 100%;\n  min-width: 0;\n  overflow-x: hidden;\n  overflow-y: auto;');
+    expect(layoutStyles).not.toMatch(/\.sidebar,\n\.workbench \{[^}]*padding:/);
+    expect(layoutStyles).toContain('.workbench {\n  padding: 16px;\n  border-left: 1px solid var(--app-border);\n}');
     expect(layoutStyles).toContain('.main {\n  box-sizing: border-box;\n  height: 100%;\n  min-width: 0;\n  overflow-x: hidden;\n  overflow-y: auto;');
   });
 

@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 
 import type { Context as CordisContext } from '@deepseek-ai/cordis';
+import { readFileSync } from 'node:fs';
 import { Context } from '@deepseek-ai/cordis';
 import { apply as applyI18n } from '@yunzhen/cordis-ui-i18n';
 import { apply as applyRenderer, inject as rendererInject, Slot } from '@yunzhen/cordis-ui-renderer';
@@ -10,6 +11,8 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { apply as applyRouter, inject as routerInject } from './index';
 
 Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true });
+
+const routerStyles = readFileSync('packages/ui/router/src/index.module.css', 'utf8');
 
 beforeEach(() => {
   localStorage.clear();
@@ -151,6 +154,12 @@ async function bootRouterWithRouteSidebar() {
 }
 
 describe('router host', () => {
+  it('lets navigation and footer own their sidebar spacing', () => {
+    expect(routerStyles).not.toMatch(/\.sidebar \{[^}]*padding:/);
+    expect(routerStyles).toContain('.navigation {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  padding: 16px 16px 0;\n}');
+    expect(routerStyles).toMatch(/\.footer \{[^}]*padding: [^;]+;/);
+  });
+
   it('rejects children below an index route instead of dropping them', async () => {
     const { ctx, dispose } = await boot();
     ctx.routes.register({ id: 'index-parent', index: true, Component: () => null });
