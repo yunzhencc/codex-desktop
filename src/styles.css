@@ -1,3 +1,33 @@
 @import "@yunzhen/shadcn-ui/styles.css";
 
 @source "./";
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  position: relative;
+  overflow: hidden;
+}
+
+.app-titlebar {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 10;
+  height: 48px;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.app-content {
+  height: 100%;
+  min-height: 0;
+}
+
+.app-content > * {
+  height: 100%;
+}
