@@ -9,7 +9,7 @@ export default antfu({
   ignores: [
     'docs/**',
     'src-tauri/**',
-    'src/components/ui/**',
+    'packages/shadcn-ui/src/components/**',
   ],
   jsonc: false,
   react: true,
