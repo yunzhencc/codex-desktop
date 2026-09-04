@@ -52,22 +52,22 @@ importers:
         version: 2.5.5
       '@yunzhen/cordis-client-modules':
         specifier: workspace:*
-        version: link:packages/client/modules
+        version: link:packages/cordis/client/modules
       '@yunzhen/cordis-host-plugin-catalog':
         specifier: workspace:*
-        version: link:packages/host/plugin-catalog
+        version: link:packages/cordis/host/plugin-catalog
       '@yunzhen/cordis-ui-i18n':
         specifier: workspace:*
-        version: link:packages/ui/i18n
+        version: link:packages/cordis/ui/i18n
       '@yunzhen/cordis-ui-renderer':
         specifier: workspace:*
-        version: link:packages/ui/renderer
+        version: link:packages/cordis/ui/renderer
       '@yunzhen/cordis-ui-router':
         specifier: workspace:*
-        version: link:packages/ui/router
+        version: link:packages/cordis/ui/router
       '@yunzhen/cordis-ui-theme':
         specifier: workspace:*
-        version: link:packages/ui/theme
+        version: link:packages/cordis/ui/theme
       '@yunzhen/shadcn-ui':
         specifier: workspace:*
         version: link:packages/shadcn-ui
@@ -172,7 +172,7 @@ importers:
         specifier: ^4.1.11
         version: 4.1.11(@types/node@26.4.1)(jsdom@30.0.1)(vite@8.2.2(@types/node@26.4.1)(jiti@2.6.1)(yaml@2.9.0))
 
-  packages/client/modules:
+  packages/cordis/client/modules:
     dependencies:
       '@deepseek-ai/cordis':
         specifier: ^4.0.2
@@ -181,7 +181,7 @@ importers:
         specifier: workspace:*
         version: link:../../ui/renderer
 
-  packages/host/plugin-catalog:
+  packages/cordis/host/plugin-catalog:
     dependencies:
       '@yunzhen/cordis-client-modules':
         specifier: workspace:*
@@ -190,25 +190,7 @@ importers:
         specifier: ^2.9.0
         version: 2.9.0
 
-  packages/shadcn-ui:
-    dependencies:
-      '@base-ui/react':
-        specifier: ^1.7.0
-        version: 1.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
-      class-variance-authority:
-        specifier: ^0.7.1
-        version: 0.7.1
-      cn:
-        specifier: ^0.2.4
-        version: 0.2.4
-      lucide-react:
-        specifier: ^1.39.0
-        version: 1.39.0(react@19.2.8)
-      react:
-        specifier: ^19.2.8
-        version: 19.2.8
-
-  packages/ui/i18n:
+  packages/cordis/ui/i18n:
     dependencies:
       '@deepseek-ai/cordis':
         specifier: ^4.0.2
@@ -223,7 +205,7 @@ importers:
         specifier: ^16.5.9
         version: 16.6.6(i18next@25.10.10(typescript@6.0.3))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@6.0.3)
 
-  packages/ui/renderer:
+  packages/cordis/ui/renderer:
     dependencies:
       '@deepseek-ai/cordis':
         specifier: ^4.0.2
@@ -244,7 +226,7 @@ importers:
         specifier: ^16.5.9
         version: 16.6.6(i18next@25.10.10(typescript@6.0.3))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(typescript@6.0.3)
 
-  packages/ui/router:
+  packages/cordis/ui/router:
     dependencies:
       '@deepseek-ai/cordis':
         specifier: ^4.0.2
@@ -268,9 +250,9 @@ importers:
         specifier: ^7.18.3
         version: 7.18.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
 
-  packages/ui/slots: {}
+  packages/cordis/ui/slots: {}
 
-  packages/ui/theme:
+  packages/cordis/ui/theme:
     dependencies:
       '@deepseek-ai/cordis':
         specifier: ^4.0.2
@@ -286,6 +268,24 @@ importers:
         specifier: ^19.2.8
         version: 19.2.8(react@19.2.8)
 
+  packages/shadcn-ui:
+    dependencies:
+      '@base-ui/react':
+        specifier: ^1.7.0
+        version: 1.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
+      cn:
+        specifier: ^0.2.4
+        version: 0.2.4
+      lucide-react:
+        specifier: ^1.39.0
+        version: 1.39.0(react@19.2.8)
+      react:
+        specifier: ^19.2.8
+        version: 19.2.8
+
   plugins/account-menu:
     dependencies:
       '@base-ui/react':
@@ -299,13 +299,13 @@ importers:
         version: 4.0.2
       '@yunzhen/cordis-ui-i18n':
         specifier: workspace:*
-        version: link:../../packages/ui/i18n
+        version: link:../../packages/cordis/ui/i18n
       '@yunzhen/cordis-ui-renderer':
         specifier: workspace:*
-        version: link:../../packages/ui/renderer
+        version: link:../../packages/cordis/ui/renderer
       '@yunzhen/cordis-ui-router':
         specifier: workspace:*
-        version: link:../../packages/ui/router
+        version: link:../../packages/cordis/ui/router
       lucide-react:
         specifier: ^1.39.0
         version: 1.39.0(react@19.2.8)
@@ -330,13 +330,13 @@ importers:
         version: 4.0.2
       '@yunzhen/cordis-ui-renderer':
         specifier: workspace:*
-        version: link:../../packages/ui/renderer
+        version: link:../../packages/cordis/ui/renderer
       '@yunzhen/cordis-ui-router':
         specifier: workspace:*
-        version: link:../../packages/ui/router
+        version: link:../../packages/cordis/ui/router
       '@yunzhen/cordis-ui-slots':
         specifier: workspace:*
-        version: link:../../packages/ui/slots
+        version: link:../../packages/cordis/ui/slots
       react:
         specifier: ^19.2.8
         version: 19.2.8
@@ -346,7 +346,7 @@ importers:
     devDependencies:
       '@yunzhen/cordis-ui-i18n':
         specifier: workspace:*
-        version: link:../../packages/ui/i18n
+        version: link:../../packages/cordis/ui/i18n
 
   plugins/local-conversation:
     dependencies:
@@ -355,10 +355,10 @@ importers:
         version: 4.0.2
       '@yunzhen/cordis-ui-i18n':
         specifier: workspace:*
-        version: link:../../packages/ui/i18n
+        version: link:../../packages/cordis/ui/i18n
       '@yunzhen/cordis-ui-router':
         specifier: workspace:*
-        version: link:../../packages/ui/router
+        version: link:../../packages/cordis/ui/router
       react:
         specifier: ^19.2.8
         version: 19.2.8
@@ -376,10 +376,10 @@ importers:
         version: 4.0.2
       '@yunzhen/cordis-ui-i18n':
         specifier: workspace:*
-        version: link:../../packages/ui/i18n
+        version: link:../../packages/cordis/ui/i18n
       '@yunzhen/cordis-ui-router':
         specifier: workspace:*
-        version: link:../../packages/ui/router
+        version: link:../../packages/cordis/ui/router
       react:
         specifier: ^19.2.8
         version: 19.2.8
@@ -397,10 +397,10 @@ importers:
         version: 4.0.2
       '@yunzhen/cordis-ui-i18n':
         specifier: workspace:*
-        version: link:../../packages/ui/i18n
+        version: link:../../packages/cordis/ui/i18n
       '@yunzhen/cordis-ui-theme':
         specifier: workspace:*
-        version: link:../../packages/ui/theme
+        version: link:../../packages/cordis/ui/theme
       lucide-react:
         specifier: ^1.39.0
         version: 1.39.0(react@19.2.8)
@@ -413,10 +413,10 @@ importers:
     devDependencies:
       '@yunzhen/cordis-ui-renderer':
         specifier: workspace:*
-        version: link:../../packages/ui/renderer
+        version: link:../../packages/cordis/ui/renderer
       '@yunzhen/cordis-ui-router':
         specifier: workspace:*
-        version: link:../../packages/ui/router
+        version: link:../../packages/cordis/ui/router
       react-dom:
         specifier: ^19.2.8
         version: 19.2.8(react@19.2.8)
@@ -431,10 +431,10 @@ importers:
         version: 4.0.2
       '@yunzhen/cordis-ui-i18n':
         specifier: workspace:*
-        version: link:../../packages/ui/i18n
+        version: link:../../packages/cordis/ui/i18n
       '@yunzhen/cordis-ui-renderer':
         specifier: workspace:*
-        version: link:../../packages/ui/renderer
+        version: link:../../packages/cordis/ui/renderer
       lucide-react:
         specifier: ^1.39.0
         version: 1.39.0(react@19.2.8)
@@ -455,10 +455,10 @@ importers:
         version: 4.0.2
       '@yunzhen/cordis-ui-i18n':
         specifier: workspace:*
-        version: link:../../packages/ui/i18n
+        version: link:../../packages/cordis/ui/i18n
       '@yunzhen/cordis-ui-renderer':
         specifier: workspace:*
-        version: link:../../packages/ui/renderer
+        version: link:../../packages/cordis/ui/renderer
       '@yunzhen/shadcn-ui':
         specifier: workspace:*
         version: link:../../packages/shadcn-ui
@@ -471,7 +471,7 @@ importers:
     devDependencies:
       '@yunzhen/cordis-ui-router':
         specifier: workspace:*
-        version: link:../../packages/ui/router
+        version: link:../../packages/cordis/ui/router
       react-dom:
         specifier: ^19.2.8
         version: 19.2.8(react@19.2.8)
@@ -483,16 +483,16 @@ importers:
         version: 4.0.2
       '@yunzhen/cordis-ui-i18n':
         specifier: workspace:*
-        version: link:../../packages/ui/i18n
+        version: link:../../packages/cordis/ui/i18n
       '@yunzhen/cordis-ui-renderer':
         specifier: workspace:*
-        version: link:../../packages/ui/renderer
+        version: link:../../packages/cordis/ui/renderer
       '@yunzhen/cordis-ui-router':
         specifier: workspace:*
-        version: link:../../packages/ui/router
+        version: link:../../packages/cordis/ui/router
       '@yunzhen/cordis-ui-slots':
         specifier: workspace:*
-        version: link:../../packages/ui/slots
+        version: link:../../packages/cordis/ui/slots
       react:
         specifier: ^19.2.8
         version: 19.2.8
@@ -513,10 +513,10 @@ importers:
         version: 4.0.2
       '@yunzhen/cordis-ui-i18n':
         specifier: workspace:*
-        version: link:../../packages/ui/i18n
+        version: link:../../packages/cordis/ui/i18n
       '@yunzhen/cordis-ui-renderer':
         specifier: workspace:*
-        version: link:../../packages/ui/renderer
+        version: link:../../packages/cordis/ui/renderer
       lucide-react:
         specifier: ^1.39.0
         version: 1.39.0(react@19.2.8)
