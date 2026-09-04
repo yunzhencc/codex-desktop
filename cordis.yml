@@ -12,6 +12,8 @@
   name: '@yunzhen/cordis-ui-theme'
 - id: account-menu
   name: '@codex-desktop/account-menu'
+- id: sidebar-help
+  name: '@codex-desktop/sidebar-help'
 - id: settings-general
   name: '@codex-desktop/settings-general'
 - id: settings-appearance

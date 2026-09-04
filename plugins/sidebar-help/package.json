@@ -1,0 +1,28 @@
+{
+  "name": "@codex-desktop/sidebar-help",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.tsx",
+    "./client": "./src/index.tsx"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.7.0",
+    "@deepseek-ai/cordis": "^4.0.2",
+    "@yunzhen/cordis-ui-i18n": "workspace:*",
+    "@yunzhen/cordis-ui-renderer": "workspace:*",
+    "lucide-react": "^1.39.0",
+    "react": "^19.2.8",
+    "react-i18next": "^16.5.9"
+  },
+  "devDependencies": {
+    "react-dom": "^19.2.8"
+  },
+  "yunzhen": {
+    "client": {
+      "platform": "web",
+      "inject": ["@yunzhen/cordis-ui-i18n", "@yunzhen/cordis-ui-renderer"],
+      "immediately": false
+    }
+  }
+}

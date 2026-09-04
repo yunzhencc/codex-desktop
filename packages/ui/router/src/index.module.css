@@ -11,6 +11,9 @@
 }
 
 .footer {
+  display: flex;
+  gap: 4px;
+  align-items: center;
   margin-top: auto;
   padding-top: 16px;
 }
